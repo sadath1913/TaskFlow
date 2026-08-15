@@ -1,0 +1,555 @@
+/* =========================================
+   BOARDS PAGE
+========================================= */
+
+.boards-page {
+  width: 100%;
+  min-width: 0;
+  padding: 32px 40px;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.08),
+      transparent 35%
+    );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.boards-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 34px;
+}
+
+.boards-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.boards-title-row h1 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 36px;
+  font-weight: 750;
+
+  letter-spacing: -1px;
+}
+
+.boards-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 34px;
+  height: 30px;
+
+  padding: 0 9px;
+
+  border-radius: 8px;
+
+  background: rgba(99, 102, 241, 0.16);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+
+  color: #a5b4fc;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.boards-header p {
+  margin: 6px 0 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   CREATE BUTTON
+========================================= */
+
+.boards-create-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  border: none;
+  border-radius: 12px;
+
+  padding: 14px 21px;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #7c3aed
+  );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.boards-create-button span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.boards-create-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(99, 102, 241, 0.35);
+}
+
+
+/* =========================================
+   BOARDS GRID
+========================================= */
+
+.boards-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    );
+
+  gap: 22px;
+
+  width: 100%;
+}
+
+
+/* =========================================
+   BOARD CARD
+========================================= */
+
+.board-card {
+  position: relative;
+
+  min-height: 330px;
+
+  padding: 28px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #182338,
+      #111b2e
+    );
+
+  border: 1px solid #293852;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Top gradient line */
+
+.board-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #22d3ee
+    );
+
+  opacity: 0.85;
+}
+
+
+/* Hover */
+
+.board-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #475a82;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Active */
+
+.board-card.active {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.25),
+    0 18px 40px rgba(79, 70, 229, 0.12);
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.board-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.board-icon {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #7c3aed
+    );
+
+  color: white;
+
+  font-size: 25px;
+
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
+}
+
+.board-number {
+  color: #64748b;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================
+   BOARD INFORMATION
+========================================= */
+
+.board-main-info {
+  flex: 1;
+}
+
+.board-main-info h2 {
+  margin: 0 0 9px;
+
+  color: #f8fafc;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.board-type {
+  display: block;
+
+  margin-bottom: 16px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   ACTIVE BADGE
+========================================= */
+
+.board-active-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 11px;
+
+  border-radius: 8px;
+
+  background: rgba(16, 185, 129, 0.12);
+
+  border: 1px solid rgba(16, 185, 129, 0.25);
+
+  color: #4ade80;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   CARD ACTIONS
+========================================= */
+
+.board-card-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+
+/* Open */
+
+.open-board-button {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  min-height: 48px;
+
+  border: 1px solid rgba(99, 102, 241, 0.3);
+
+  border-radius: 11px;
+
+  background: rgba(99, 102, 241, 0.12);
+
+  color: #a5b4fc;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.open-board-button span {
+  font-size: 18px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+.open-board-button:hover {
+  background: rgba(99, 102, 241, 0.22);
+
+  color: #c7d2fe;
+}
+
+.open-board-button:hover span {
+  transform: translateX(4px);
+}
+
+
+/* Delete */
+
+.delete-board-button {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  border: 1px solid rgba(239, 68, 68, 0.2);
+
+  background: rgba(239, 68, 68, 0.06);
+
+  color: #f87171;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.delete-board-button:hover {
+  background: rgba(239, 68, 68, 0.15);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   CREATE NEW BOARD CARD
+========================================= */
+
+.create-board-card {
+  min-height: 330px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 20px;
+
+  border: 1px dashed #334968;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(24, 35, 56, 0.45),
+      rgba(15, 23, 42, 0.35)
+    );
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.create-board-card:hover {
+  border-color: #6366f1;
+
+  background:
+    rgba(99, 102, 241, 0.06);
+
+  transform: translateY(-4px);
+}
+
+.create-board-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 16px;
+
+  background: rgba(99, 102, 241, 0.1);
+
+  border: 1px solid rgba(99, 102, 241, 0.25);
+
+  color: #a5b4fc;
+
+  font-size: 30px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.create-board-card:hover .create-board-icon {
+  background: rgba(99, 102, 241, 0.2);
+
+  transform: scale(1.08);
+}
+
+.create-board-card h2 {
+  margin: 0 0 8px;
+
+  color: #e2e8f0;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.create-board-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .boards-page {
+    padding: 26px;
+  }
+
+  .boards-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(260px, 1fr)
+      );
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .boards-page {
+    padding: 20px;
+  }
+
+  .boards-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .boards-create-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .boards-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

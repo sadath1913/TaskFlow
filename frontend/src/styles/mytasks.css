@@ -1,0 +1,624 @@
+/* =========================================
+   MY TASKS PAGE
+========================================= */
+
+.mytasks-page {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+  box-sizing: border-box;
+
+  padding: 34px 40px;
+
+  color: #e2e8f0;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.07),
+      transparent 35%
+    );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.mytasks-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 34px;
+}
+
+.mytasks-title-row {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.mytasks-title-row h1 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 34px;
+  font-weight: 750;
+
+  letter-spacing: -1px;
+}
+
+.mytasks-header p {
+  margin: 7px 0 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   TASK COUNT
+========================================= */
+
+.mytasks-count {
+  min-width: 34px;
+  height: 28px;
+
+  padding: 0 9px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: rgba(99, 102, 241, 0.14);
+
+  border: 1px solid rgba(99, 102, 241, 0.28);
+
+  color: #a5b4fc;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   CREATE TASK
+========================================= */
+
+.create-task-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 13px 21px;
+
+  border: none;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #7c3aed
+    );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.create-task-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(99, 102, 241, 0.35);
+}
+
+
+/* =========================================
+   FILTERS
+========================================= */
+
+.mytasks-filters {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-bottom: 28px;
+}
+
+/* =========================================
+   MY TASKS SEARCH
+========================================= */
+
+.mytasks-search {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 730px;
+  min-width: 0;
+}
+
+.mytasks-search span {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: #64748b;
+  font-size: 18px;
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mytasks-search input[type="text"] {
+  display: block;
+
+  width: 100% !important;
+  height: 54px;
+
+  box-sizing: border-box;
+
+  padding: 0 18px 0 47px;
+
+  border: 1px solid #30415c;
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #1b283c;
+  color: #f8fafc;
+
+  font-size: 14px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.mytasks-search input[type="text"]::placeholder {
+  color: #64748b;
+}
+
+.mytasks-search input[type="text"]:focus {
+  border-color: #6366f1;
+
+  background: #1d2b42;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* =========================================
+   PRIORITY FILTER
+========================================= */
+
+.mytasks-filters select {
+  width: 225px;
+  height: 54px;
+
+  padding: 0 16px;
+
+  border-radius: 12px;
+
+  border: 1px solid #30415c;
+
+  outline: none;
+
+  background: #1b283c;
+
+  color: #f8fafc;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.mytasks-filters select:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.tasks-error {
+  margin-bottom: 20px;
+
+  padding: 13px 16px;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(239, 68, 68, 0.25);
+
+  background: rgba(239, 68, 68, 0.08);
+
+  color: #f87171;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   TABLE CONTAINER
+========================================= */
+
+.mytasks-table-container {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border-radius: 18px;
+
+  border: 1px solid #30415c;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1b283c,
+      #172337
+    );
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.mytasks-table {
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.mytasks-table thead {
+  background:
+    rgba(15, 23, 42, 0.45);
+}
+
+.mytasks-table th {
+  height: 60px;
+
+  padding: 0 22px;
+
+  border-bottom: 1px solid #30415c;
+
+  color: #8ba2c4;
+
+  text-align: left;
+
+  font-size: 12px;
+  font-weight: 750;
+
+  letter-spacing: 0.6px;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.mytasks-table tbody tr {
+  transition:
+    background 0.2s ease;
+}
+
+.mytasks-table tbody tr:hover {
+  background:
+    rgba(99, 102, 241, 0.055);
+}
+
+.mytasks-table td {
+  padding: 21px 22px;
+
+  border-bottom: 1px solid #2d3b52;
+
+  color: #cbd5e1;
+
+  font-size: 14px;
+}
+
+.mytasks-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   TASK COLUMN
+========================================= */
+
+.task-table-title {
+  margin-bottom: 6px;
+
+  color: #f8fafc;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.task-table-description {
+  max-width: 300px;
+
+  overflow: hidden;
+
+  color: #7185a5;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================
+   BOARD
+========================================= */
+
+.mytasks-table td:nth-child(2) {
+  color: #a5b4fc;
+
+  font-weight: 500;
+}
+
+
+/* =========================================
+   STATUS BADGE
+========================================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 70px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(99, 102, 241, 0.18);
+
+  color: #a5b4fc;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   PRIORITY
+========================================= */
+
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 58px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* HIGH */
+
+.priority-high {
+  background:
+    rgba(239, 68, 68, 0.14);
+
+  border: 1px solid rgba(239, 68, 68, 0.28);
+
+  color: #f87171;
+}
+
+
+/* MEDIUM */
+
+.priority-medium {
+  background:
+    rgba(245, 158, 11, 0.14);
+
+  border: 1px solid rgba(245, 158, 11, 0.28);
+
+  color: #fbbf24;
+}
+
+
+/* LOW */
+
+.priority-low {
+  background:
+    rgba(16, 185, 129, 0.14);
+
+  border: 1px solid rgba(16, 185, 129, 0.28);
+
+  color: #34d399;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.task-table-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.task-table-actions button {
+  min-width: 60px;
+
+  padding: 9px 13px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #34445c;
+
+  color: #dbeafe;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.task-table-actions button:hover {
+  background: #435570;
+
+  transform: translateY(-1px);
+}
+
+.task-table-actions .danger {
+  background:
+    rgba(127, 29, 29, 0.85);
+
+  color: #fecaca;
+}
+
+.task-table-actions .danger:hover {
+  background:
+    rgba(185, 28, 28, 0.9);
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 180px;
+
+  color: #8194b3;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.mytasks-empty {
+  min-height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  border: 1px dashed #344762;
+
+  background:
+    rgba(24, 35, 56, 0.45);
+
+  color: #7185a5;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .mytasks-page {
+    padding: 28px;
+  }
+
+  .mytasks-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mytasks-search {
+    max-width: none;
+  }
+
+  .mytasks-filters select {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .mytasks-page {
+    padding: 20px;
+  }
+
+  .mytasks-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .create-task-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+

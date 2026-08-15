@@ -1,0 +1,587 @@
+
+/* =========================================================
+   KANBAN BOARD
+========================================================= */
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 16px;
+
+  width: 100%;
+  align-items: stretch;
+
+  overflow-x: auto;
+  padding: 4px 2px 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   KANBAN COLUMN
+========================================================= */
+
+.kanban-column {
+  position: relative;
+
+  min-width: 280px;
+  min-height: 520px;
+
+  padding: 14px;
+
+  background: linear-gradient(
+    180deg,
+    #172236 0%,
+    #111b2d 100%
+  );
+
+  border: 1px solid #263650;
+  border-radius: 14px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   COLUMN COLORS
+========================================================= */
+
+/* TO DO */
+
+.column-todo {
+  border-top: 3px solid #4f7cff;
+}
+
+.column-todo:hover {
+  border-color: #4f7cff;
+  box-shadow: 0 8px 25px rgba(79, 124, 255, 0.12);
+}
+
+
+/* IN PROGRESS */
+
+.column-progress {
+  border-top: 3px solid #f5b82e;
+}
+
+.column-progress:hover {
+  border-color: #f5b82e;
+  box-shadow: 0 8px 25px rgba(245, 184, 46, 0.12);
+}
+
+
+/* DONE */
+
+.column-done {
+  border-top: 3px solid #22c55e;
+}
+
+.column-done:hover {
+  border-color: #22c55e;
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.12);
+}
+
+
+/* =========================================================
+   COLUMN HEADER
+========================================================= */
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 42px;
+
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid #2a3850;
+}
+
+
+.column-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+
+.column-header h3 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   COLUMN TASK COUNT
+========================================================= */
+
+.column-count {
+  min-width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 7px;
+
+  border-radius: 7px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* Blue count */
+
+.column-todo .column-count {
+  background: rgba(79, 124, 255, 0.3);
+  color: #79a1ff;
+}
+
+
+/* Orange count */
+
+.column-progress .column-count {
+  background: rgba(245, 184, 46, 0.25);
+  color: #f5c94a;
+}
+
+
+/* Green count */
+
+.column-done .column-count {
+  background: rgba(34, 197, 94, 0.22);
+  color: #4ade80;
+}
+
+
+/* =========================================================
+   COLUMN ADD BUTTON
+========================================================= */
+
+.column-add-button {
+  width: 28px;
+  height: 28px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #34445f;
+  color: #e5e7eb;
+
+  font-size: 20px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.column-add-button:hover {
+  background: #4f5f7d;
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   TASK LIST
+========================================================= */
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  flex: 1;
+
+  min-height: 0;
+}
+
+
+/* =========================================================
+   TASK CARD
+========================================================= */
+
+.task-card {
+  position: relative;
+
+  padding: 15px;
+
+  background: linear-gradient(
+    145deg,
+    #1b293e,
+    #162236
+  );
+
+  border: 1px solid #30415c;
+  border-radius: 12px;
+
+  color: #f8fafc;
+
+  cursor: grab;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #49627f;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+
+
+/* =========================================================
+   TASK CARD HEADER
+========================================================= */
+
+.task-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+
+.task-card h4 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   TASK DESCRIPTION
+========================================================= */
+
+.task-card p {
+  margin: 0 0 15px;
+
+  color: #9eabc0;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   TASK MENU
+========================================================= */
+
+.task-menu {
+  position: relative;
+  flex-shrink: 0;
+}
+
+
+.task-menu-button {
+  width: 25px;
+  height: 30px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+  color: #aebbd0;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.task-menu-button:hover {
+  background: #293951;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   TASK MENU DROPDOWN
+========================================================= */
+
+.task-menu-dropdown {
+  position: absolute;
+
+  top: 32px;
+  right: 0;
+
+  min-width: 110px;
+
+  padding: 5px;
+
+  background: #202e44;
+
+  border: 1px solid #344862;
+  border-radius: 8px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35);
+
+  z-index: 100;
+}
+
+
+.task-menu-dropdown button {
+  width: 100%;
+
+  padding: 8px 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+  color: #e5e7eb;
+
+  text-align: left;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+.task-menu-dropdown button:hover {
+  background: #33445e;
+}
+
+
+/* =========================================================
+   TASK FOOTER
+========================================================= */
+
+.task-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: auto;
+}
+
+
+/* =========================================================
+   PRIORITY BADGES
+========================================================= */
+
+.task-priority {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: capitalize;
+}
+
+
+/* High */
+
+.priority-high {
+  background: rgba(239, 68, 68, 0.18);
+  color: #ff7272;
+
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+
+/* Medium */
+
+.priority-medium {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+
+/* Low */
+
+.priority-low {
+  background: rgba(34, 197, 94, 0.16);
+  color: #4ade80;
+
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+
+/* =========================================================
+   DROP ZONE
+========================================================= */
+
+.column-drop-zone {
+  min-height: 58px;
+
+  margin-top: 12px;
+
+  border: 1px dashed #3c506e;
+  border-radius: 10px;
+
+  color: #7284a0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  font-size: 12px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* Blue drop zone */
+
+.column-todo .column-drop-zone {
+  border-color: rgba(79, 124, 255, 0.55);
+  color: #4f8cff;
+}
+
+.column-todo .column-drop-zone:hover {
+  background: rgba(79, 124, 255, 0.07);
+}
+
+
+/* Orange drop zone */
+
+.column-progress .column-drop-zone {
+  border-color: rgba(245, 184, 46, 0.55);
+  color: #f5b82e;
+}
+
+.column-progress .column-drop-zone:hover {
+  background: rgba(245, 184, 46, 0.07);
+}
+
+
+/* Green drop zone */
+
+.column-done .column-drop-zone {
+  border-color: rgba(34, 197, 94, 0.55);
+  color: #22c55e;
+}
+
+.column-done .column-drop-zone:hover {
+  background: rgba(34, 197, 94, 0.07);
+}
+
+
+.drop-icon {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DRAG OVER EFFECT
+========================================================= */
+
+.kanban-column:has(.column-drop-zone:hover) {
+  background: linear-gradient(
+    180deg,
+    #1a2940 0%,
+    #132036 100%
+  );
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .kanban-board {
+    grid-template-columns: repeat(
+      3,
+      minmax(260px, 1fr)
+    );
+
+    overflow-x: auto;
+  }
+
+  .kanban-column {
+    min-width: 260px;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  .kanban-column {
+    min-width: 100%;
+    min-height: 400px;
+  }
+}

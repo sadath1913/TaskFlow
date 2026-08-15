@@ -115,78 +115,71 @@ Task
 - Create a task directly from My Tasks
 
 ---
-
 # Result / Output
 
-Put the ten screenshots in:
+The following screenshots demonstrate the main features and workflows implemented in TaskFlow.
 
-```text
-docs/images/
-```
+## 1. Create Board
 
-Then use the following section in the repository.
+![Create Board](frontend/src/assets/createboard2.png)
 
-## 1. Dashboard
+Create a new workspace board for organizing and managing tasks.
 
-![TaskFlow Dashboard](.png)
+## 2. Dashboard
 
-Main Kanban dashboard showing the selected board and workflow columns.
+![Dashboard](frontend/src/assets/dashboard1.png)
 
-## 2. Dashboard Statistics
+Main dashboard displaying the selected board, task statistics, and Kanban workflow.
 
-![Dashboard Statistics](docs/images/dashboard-statistics.png)
+## 3. Create Task
 
-Displays task statistics such as Total Tasks, Completed, In Progress, and To Do.
+![Create Task](frontend/src/assets/createtask.png)
 
-## 3. Kanban Board
+Create a new task by providing the task title, description, priority, and board column.
 
-![Kanban Board](docs/images/kanban-board.png)
+## 4. Move Task
 
-Tasks are organized into workflow columns.
+![Move Task](frontend/src/assets/movetask.png)
 
-## 4. Task Card
+Move tasks between Kanban columns using the drag-and-drop workflow.
 
-![Task Card](docs/images/task-card.png)
+## 5. Edit / Delete Task
 
-Individual cards display task title, description, priority, and actions.
+![Edit and Delete Task](frontend/src/assets/taskedit_del.png)
 
-## 5. My Tasks
+Task status is updated when a task is moved to another workflow column.
+Task actions allow users to edit or delete an existing task directly from the task interface.
 
-![My Tasks](docs/images/my-tasks.png)
+## 6. Edit Task
 
-Table-based view of tasks belonging to the currently selected board.
+![Edit Task](frontend/src/assets/Edit_task.png)
 
-## 6. My Tasks Search
+Edit an existing task and update its title, description, priority, or status.
 
-![My Tasks Search](docs/images/my-tasks-search.png)
 
-Search tasks by task title or description.
+## 7. My Tasks
 
-## 7. Create Task
+![My Tasks](frontend/src/assets/mytask.png)
 
-![Create Task](docs/images/create-task.png)
+My Tasks provides a centralized view of tasks with their board, status, priority, and available actions.
 
-Task creation interface.
+## 8. Search and Priority Filter
 
-## 8. Edit Task
+![Search and Priority Filter](frontend/src/assets/mytaskprio.png)
 
-![Edit Task](docs/images/edit-task.png)
+Filter tasks by priority and quickly find relevant tasks.
 
-Task editing interface.
+## 9. Task Search
 
-## 9. Boards
+![Task Search](frontend/src/assets/searchtas.png)
 
-![Boards](docs/images/boards.png)
+Search tasks by entering part or all of the task title or description.
 
-Board management interface for creating, opening, and deleting boards.
+## 10. My Boards 
 
-## 10. Sidebar
+![Task Search](frontend/src/assets/myboards.png)
 
-![TaskFlow Sidebar](docs/images/sidebar.png)
-
-Application navigation and board selection sidebar.
-
-> Rename the image filenames above to match the actual ten screenshots in your repository.
+Manage all available boards from a centralized interface. Users can create new boards, open existing boards, select the active board, and delete boards when they are no longer required.
 
 ---
 
@@ -367,8 +360,10 @@ Adjust the backend structure to match the actual repository if its module names 
 ## 1. Clone the Repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
-cd TaskFlow
+mkdir taskflow
+cd taskFlow
+git clone https://github.com/sadath1913/TaskFlow.git
+
 ```
 
 ---
@@ -389,6 +384,8 @@ venv\Scripts\activate
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+or
+./venv/Scripts/activate.ps1 
 ```
 
 ## 3. Open Backend
