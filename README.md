@@ -1,8 +1,9 @@
 # GitHub URl
 ```text
 https://github.com/sadath1913/TaskFlow
-```
 USERNAME: sadath1913
+Deployment Url : https://task-flow-rho-virid.vercel.app/
+```
 --- 
 # TaskFlow
 
@@ -19,6 +20,7 @@ TaskFlow is a full-stack task and project management application built around bo
 - [Project Structure](#project-structure)
 - [Setup](#setup)
 - [Running the Project](#running-the-project)
+- [Deployment](#deployment)
 - [Application Workflow](#application-workflow)
 - [Core Functionality](#core-functionality)
 - [API Overview](#api-overview)
@@ -504,6 +506,62 @@ npm run dev
 
 Open the frontend URL shown by Vite.
 
+---
+
+# Deployment
+
+TaskFlow is deployed using separate platforms for the frontend and backend.
+
+- **Frontend:** Vercel
+- **Backend:** Render
+- **Database:** SQLite
+
+## Deployment URLs
+
+- **Frontend:** https://task-flow-rho-virid.vercel.app/
+- **Backend:** https://taskflow-4ps0.onrender.com/
+
+## Deployment Steps
+
+### Frontend Deployment
+
+1. Push the project to GitHub.
+2. Import the GitHub repository into Vercel.
+3. Set the **Root Directory** to:
+
+   ```text
+   frontend
+   ```
+
+4. Configure the production environment variable:
+
+   ```env
+   VITE_API_URL=https://taskflow-4ps0.onrender.com
+   ```
+
+5. Deploy the Vite frontend.
+
+### Backend Deployment
+
+1. Push the backend code to GitHub.
+2. Import the GitHub repository into Render.
+3. Configure the backend service to use the **backend** directory.
+4. Install dependencies using:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. Start the FastAPI application using:
+
+   ```bash
+   uvicorn app.main:app --host 0.0.0.0 --port $PORT
+   ```
+
+6. Configure **CORS** to allow requests from the deployed Vercel frontend.
+7. Deploy the backend.
+
+The deployed frontend communicates with the Render backend through the `VITE_API_URL` environment variable.
 ---
 
 # Application Workflow
