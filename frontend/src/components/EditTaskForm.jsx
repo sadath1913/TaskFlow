@@ -8,20 +8,49 @@ function EditTaskForm({ task, onTaskUpdated, onClose }) {
   );
   const [priority, setPriority] = useState(task.priority);
 
+  const [error, setError] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setError("");
+
+    // Validate title
+    if (!title || !title.trim()) {
+      setError("Please enter a valid task title.");
+      return;
+    }
+
+    const payload = {
+      title: title.trim(),
+      description: description.trim(),
+      priority,
+    };
+
     try {
-      const response = await updateTask(task.id, {
-        title,
-        description,
-        priority,
-      });
+      const response = await updateTask(
+        task.id,
+        payload
+      );
 
       onTaskUpdated(response.data);
       onClose();
+
     } catch (error) {
-      console.error("Failed to update task:", error);
+      console.error(
+        "Failed to update task:",
+        error
+      );
+
+      console.error(
+        "RESPONSE:",
+        error.response?.data
+      );
+
+      setError(
+        error.response?.data?.detail?.[0]?.msg ||
+        "Failed to update task. Please try again."
+      );
     }
   };
 
@@ -35,9 +64,10 @@ function EditTaskForm({ task, onTaskUpdated, onClose }) {
             type="text"
             placeholder="Task title"
             value={title}
-            onChange={(event) =>
-              setTitle(event.target.value)
-            }
+            onChange={(event) => {
+              setTitle(event.target.value);
+              setError("");
+            }}
             required
           />
 
@@ -59,6 +89,12 @@ function EditTaskForm({ task, onTaskUpdated, onClose }) {
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
+
+          {error && (
+            <div className="form-error">
+              {error}
+            </div>
+          )}
 
           <div className="task-form-actions">
             <button

@@ -923,43 +923,19 @@ Dashboard + MyTasks
 
 ---
 
-# Testing Checklist
+# Testing
 
-## Boards
+TaskFlow includes both automated backend tests and manual frontend validation.
 
-- [ ] Create board
-- [ ] Open board
-- [ ] Switch boards
-- [ ] Refresh browser
-- [ ] Verify selected board persists
-- [ ] Delete board
-- [ ] Verify deleted board disappears
-- [ ] Verify only selected board tasks appear
+## Backend Automated Tests
 
-## Tasks
+Backend tests are implemented using `pytest`, FastAPI `TestClient`, and a separate SQLite test database.
 
-- [ ] Create task
-- [ ] Verify task appears
-- [ ] Edit task
-- [ ] Verify updated values appear immediately
-- [ ] Delete task
-- [ ] Move task between columns
-- [ ] Refresh browser
-- [ ] Verify task remains in correct column
+Run the tests from the `backend` directory:
 
-## My Tasks
-
-- [ ] Open My Tasks
-- [ ] Verify selected board tasks only
-- [ ] Search task title
-- [ ] Search task description
-- [ ] Filter High
-- [ ] Filter Medium
-- [ ] Filter Low
-- [ ] Edit task
-- [ ] Delete task
-- [ ] Create task from My Tasks
-
+```bash
+pytest -v
+```
 ---
 
 # Troubleshooting
@@ -1125,7 +1101,7 @@ git commit -m "Initial TaskFlow project"
 Connect remote:
 
 ```bash
-git remote add origin <YOUR_REPOSITORY_URL>
+git remote add origin <URL>
 ```
 
 Push:
@@ -1133,21 +1109,6 @@ Push:
 ```bash
 git branch -M main
 git push -u origin main
-```
-
-Suggested commits:
-
-```text
-feat: add board management
-feat: add task management
-feat: add kanban drag and drop
-feat: add my tasks page
-feat: add task search and filtering
-fix: persist selected board
-fix: refresh tasks when board changes
-style: improve dashboard UI
-style: improve sidebar
-style: improve boards page
 ```
 
 ---
@@ -1182,31 +1143,34 @@ Thumbs.db
 ```
 
 ---
+# Development Notes
 
-# Future Improvements
+## Decisions and Assumptions
 
-Potential improvements include:
+- SQLite was selected because it is sufficient for this lightweight task-management application and requires no separate database server.
+- A task belongs to a column, and a column belongs to a board. Therefore, a task's board is determined through its column relationship.
+- The selected board is persisted in browser localStorage so the user's selected board remains available after a page refresh.
+- Validation is performed on both the frontend and backend. Frontend validation provides immediate feedback, while backend validation prevents invalid requests from bypassing the UI.
+- Drag-and-drop was implemented for moving tasks between columns.
 
-- User authentication
-- User registration/login
-- Multiple users per board
-- Board member permissions
-- Task due dates
-- Task labels/tags
-- Task comments
-- File attachments
-- Notifications
-- Task activity history
-- Dashboard analytics
-- Calendar integration
-- Responsive mobile layout
-- Pagination
-- Server-side search
-- Advanced task filtering
-- Board templates
-- Task sorting
-- Real-time updates with WebSockets
+## What I Would Improve With More Time
 
+- Add authentication and authorization.
+- Add board member permissions.
+- Add task due dates, labels, and comments.
+- Add pagination and server-side search/filtering for larger datasets.
+- Add more automated frontend tests.
+- Add CI/CD automation.
+- Deploy the application to a production environment.
+- Use PostgreSQL for a production-scale deployment.
+
+## Development Time
+
+Approximately **[10]** were spent designing, implementing, testing, debugging, and documenting the application.
+
+## What I Learned
+
+One useful area I explored during development was implementing relational queries with SQLAlchemy rather than relying only on basic ORM retrieval methods. In particular, the task-count-per-column query uses joins, aggregation, grouping, and ordering directly at the database layer.
 ---
 
 # Project Goals
@@ -1238,20 +1202,6 @@ The project focuses on:
 - Search and filtering
 - Persistent board selection
 - Interactive UI design
-
----
-
-# License
-
-This project is intended for educational, portfolio, and development purposes.
-
-Add the appropriate license before publishing the repository publicly.
-
-Example:
-
-```text
-MIT License
-```
 
 ---
 
