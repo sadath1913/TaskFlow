@@ -1,10 +1,17 @@
-# GitHub URl
+### Github Repo URl
 ```text
 https://github.com/sadath1913/TaskFlow
-USERNAME: sadath1913
-Deployment Url : https://task-flow-rho-virid.vercel.app/
+```
+### Github User Name
+```text
+sadath1913
+```
+### Deployment URl
+```text
+https://task-flow-rho-virid.vercel.app/
 ```
 --- 
+
 # TaskFlow
 
 TaskFlow is a full-stack task and project management application built around boards and Kanban workflows. Users can create multiple boards, organize tasks into workflow columns, set priorities, create/edit/delete tasks, move tasks using drag and drop, and manage tasks from a centralized **My Tasks** page.
