@@ -35,6 +35,8 @@ jobs:
         run: npm ci
 
       - name: Build React application
+        env:
+          VITE_API_URL: https://taskflow-4ps0.onrender.com
         run: npm run build
 
       - name: Sync Capacitor Android project
